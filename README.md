@@ -2,7 +2,7 @@
 
 ## Description
 
-Making easy how developers interact with extensive documentation, addressing the challenge faced by Company X where developers spend significant time navigating or querying peers about AWS documentation. This Proof of Concept (POC) demonstrates the potential to reduce search time by intelligently matching queries with relevant documentation segments, leveraging AWS cloud services and OpenAI's advanced language models.
+Making easy how developers interact with extensive documentation, addressing the challenge faced by Company X where developers spend significant time navigating or querying peers about AWS documentation. This Proof of Concept (POC) demonstrates the potential to reduce search time by intelligently matching queries with relevant documentation segments, leveraging OpenAI's advanced language models.
 
 **Flow description** https://excalidraw.com/#room=56260809cd6e764d0519,blpuojSmVyAmm5VN7p1JBA
 
