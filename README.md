@@ -9,8 +9,8 @@ Making easy how developers interact with extensive documentation, addressing the
 
 ## Features
 
-- **Automated Documentation Embeddings**: Processes documentation to create semantic embeddings, facilitating efficient query matching.
-- **Intelligent Query Response**: Utilizes OpenAI's GPT-3.5 for dynamic, context-aware responses to user queries, pointing towards relevant documentation sections.
+- **Automated Documentation Embeddings**: Processes documentation to create semantic embeddings, pointing towards relevant documentation sections.
+- **Intelligent Query Response**: Utilizes OpenAI's GPT-3.5 for dynamic, context-aware responses to user queries.
 - **Cloud Integration**: Fully compatible with AWS services, ensuring scalability and security, especially for handling sensitive internal documentation. (In the next version)
 
 
