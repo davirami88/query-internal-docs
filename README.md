@@ -44,8 +44,8 @@ Below are some examples of how the system can respond to various queries related
 Ensure you have Python 3.x and pip installed. Clone the repository and install the required dependencies:
 
 ```bash
-git clone https://github.com/davirami88/internal-docs-ccessibility-POC.git
-cd internal-docs-ccessibility-POC
+git clone https://github.com/davirami88/internal-docs-POC.git
+cd internal-docs-POC
 pip install -r requirements.txt
 
 ```
