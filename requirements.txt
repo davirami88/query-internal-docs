@@ -1,0 +1,7 @@
+numpy
+pandas
+openai
+sklearn
+unidecode
+tenacity
+langchain
