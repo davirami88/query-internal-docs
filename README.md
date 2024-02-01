@@ -1,4 +1,4 @@
-# internal-docs-ccessibility-POC
+# Internal Documentation Accessibility (POC)
 
 ## Description
 
