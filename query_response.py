@@ -21,7 +21,7 @@ s3 = boto3.client("s3")
 embedding_engine = "text-embedding-ada-002"
 GPT3_turbo = "gpt-3.5-turbo-1106"
 
-OPENAI_API_KEY = "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"#os.environ.get("OPENAI_API_KEY")
+OPENAI_API_KEY = "OPENAI_API_KEY"
 
 client = OpenAI(
     api_key = OPENAI_API_KEY
