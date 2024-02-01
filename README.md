@@ -8,7 +8,7 @@ Making easy how developers interact with extensive documentation, addressing the
 
 - **Automated Documentation Embeddings**: Processes documentation to create semantic embeddings, facilitating efficient query matching.
 - **Intelligent Query Response**: Utilizes OpenAI's GPT-3.5 for dynamic, context-aware responses to user queries, pointing towards relevant documentation sections.
-- **Cloud Integration**: Fully compatible with AWS services, ensuring scalability and security, especially for handling sensitive internal documentation.
+- **Cloud Integration**: Fully compatible with AWS services, ensuring scalability and security, especially for handling sensitive internal documentation. (In the next version)
 
 ## Installation
 
@@ -25,8 +25,8 @@ pip install -r requirements.txt
 
 **Flow description** https://excalidraw.com/#room=56260809cd6e764d0519,blpuojSmVyAmm5VN7p1JBA
 
-1. Generating Documentation Embeddings: The embedding files are already generated, but you can run docs_to_embeddings.py to process extra documentation and generate the embeddings.
-2. Query Response System: Modify the query on query_response.py to start querying the documentation. Input a query related to AWS documentation (already stored on the .csv files) to receive relevant information and suggestions for further reading.
+1. **Generating Documentation Embeddings:** The embedding files are already generated, but you can run docs_to_embeddings.py to process extra documentation and generate the embeddings.
+2. **Query Response System:** Modify the query on query_response.py to start querying the documentation. Input a query related to AWS documentation (already stored on the .csv files) to receive relevant information and suggestions for further reading.
 
 ## Configuration
 
