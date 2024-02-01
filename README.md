@@ -16,7 +16,7 @@ Making easy how developers interact with extensive documentation, addressing the
 
 ## Example Queries and Responses
 
-Below are some examples of how the system can respond to various queries related to AWS documentation:
+There are some examples of how the system can respond to various queries related to AWS documentation on the **query_response.ipynb** notebook and are replicated below:
 
 ### Query 1
 **Q: What is SageMaker?**
