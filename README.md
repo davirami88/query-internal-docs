@@ -18,3 +18,22 @@ Ensure you have Python 3.x and pip installed. Clone the repository and install t
 git clone https://github.com/davirami88/internal-docs-ccessibility-POC.git
 cd internal-docs-ccessibility-POC
 pip install -r requirements.txt
+
+```
+
+## Usage
+
+**Flow description** https://excalidraw.com/#room=56260809cd6e764d0519,blpuojSmVyAmm5VN7p1JBA
+
+1. Generating Documentation Embeddings: The embedding files are already generated, but you can run docs_to_embeddings.py to process extra documentation and generate the embeddings.
+2. Query Response System: Modify the query on query_response.py to start querying the documentation. Input a query related to AWS documentation (already stored on the .csv files) to receive relevant information and suggestions for further reading.
+
+## Configuration
+
+OpenAI API key for embeddings and query processing.
+AWS S3 for storage. (In the next version)
+
+## Acknowledgments
+
+Loka and Company X for the collaboration opportunity.
+OpenAI for the language models and embedding technology.
