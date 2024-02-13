@@ -1,8 +1,8 @@
-# Internal Documentation Accessibility (POC)
+# Internal Documentation Accessibility
 
 ## Description
 
-Making easy how developers interact with extensive documentation, addressing the challenge faced by Company X where developers spend significant time navigating or querying peers about AWS documentation. This Proof of Concept (POC) demonstrates the potential to reduce search time by intelligently matching queries with relevant documentation segments, leveraging OpenAI's advanced language models.
+Making easy how people interact with extensive documentation. This Proof of Concept (POC) demonstrates the potential to reduce search time by intelligently matching queries with relevant documentation segments, leveraging OpenAI's advanced language models.
 
 **Flow description** https://excalidraw.com/#room=56260809cd6e764d0519,blpuojSmVyAmm5VN7p1JBA
 
@@ -59,8 +59,3 @@ pip install -r requirements.txt
 
 OpenAI API key for embeddings and query processing.
 AWS S3 for storage. (In the next version)
-
-## Acknowledgments
-
-Loka for the collaboration opportunity.
-OpenAI for the language models and embedding technology.
