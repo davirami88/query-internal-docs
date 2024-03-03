@@ -96,7 +96,7 @@ def get_query_response(query):
 
         return response_user_query['answer']
     else:
-        return "I'm not able to answer the question"
+        return "error"
 
 def lambda_handler(event, context):
     s3 = boto3.client('s3')
