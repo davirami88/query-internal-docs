@@ -2,6 +2,7 @@ import re
 import os
 import glob
 import boto3
+import jsonify
 import unidecode
 import numpy as np
 import pandas as pd
@@ -87,17 +88,25 @@ def upload_documents(raw_text, pages, df_text, df_embeddings, s3, bucket, key):
     return txt_document_name, txt_document_name_pages, csv_filename, csv_embeddings_filename
 
 def lambda_handler(event, context):
-    s3 = boto3.client('s3')
-    region = "us-east-1"
+    try:
+        s3 = boto3.client('s3')
+        region = "us-east-1"
 
-    bucket = event["bucket"]
-    upload_bucket = event["upload_bucket"]
-    key = event["key"]
-    
-    raw_text = get_text_from_md_file(s3, bucket, key)
+        bucket = event["bucket"]
+        upload_bucket = event["upload_bucket"]
+        key = event["key"]
+        
+        raw_text = get_text_from_md_file(s3, bucket, key)
 
-    df_text, df_embeddings = get_document_embeddings(raw_text)
+        df_text, df_embeddings = get_document_embeddings(raw_text)
 
-    txt_document_name, csv_filename, csv_embeddings_filename = upload_documents(raw_text, df_text, df_embeddings, s3, upload_bucket, key)
+        txt_document_name, csv_filename, csv_embeddings_filename = upload_documents(raw_text, df_text, df_embeddings, s3, upload_bucket, key)
 
-    return txt_document_name, csv_filename, csv_embeddings_filename
+        payload = {"txt_document_name": txt_document_name,
+                "embeddings_text_filename": csv_filename,
+                "embeddings_filename": csv_embeddings_filename}
+
+        return jsonify({"message": payload}), 200
+        
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
