@@ -68,11 +68,9 @@ def get_openai_response(prompt, text, model):
 
     return result
 
-def get_query_response(s3_bucket_name, key_txt_pages, key_csv_text_file, key_csv_embeddings_file, query):
-    # Get the files from the S3 object
-    document_name = key_txt_pages
-
+def get_query_response(s3_bucket_name, document_name, key_csv_text_file, key_csv_embeddings_file, query):
     try:
+        # Get the files from the S3 object
         res = s3_text.Object(s3_bucket_name, document_name)
 
         file_content = res.get()['Body'].read().decode('utf-8')
