@@ -98,7 +98,9 @@ def get_query_response(s3_bucket_name, document_name, key_csv_text_file, key_csv
         Return your answer on the key "answer".
         """
 
-        prompt = "Based on the text, which a selected part of a whole documentation, return a JSON with a single answer in the key 'answer'. You must not recommedn read the docs, beacause the the text is an specific part of the whole documentation. Try to be as generic as possible and always based your answer on the text provided. Question: " + query
+        prompt = """Based on the text, which is a selected part of a whole documentation, return a JSON with a single answer in the key "answer". 
+        You must not recommend read the docs, beacause the text is an specific part of the whole documentation. 
+        Try to be as generic as possible and always based your answer on the text provided. Question: """ + query 
 
         valid_text_options = []
 
