@@ -2,7 +2,7 @@
 
 ## Description
 
-Making easy how people interact with extensive documentation. This Proof of Concept (POC) demonstrates the potential to reduce search time by intelligently matching queries with relevant documentation segments, leveraging OpenAI's advanced language models.
+Making easy how people interact with extensive documentation. This demonstrates the potential to reduce search time by intelligently matching queries with relevant documentation segments, leveraging OpenAI's advanced language models.
 
 **Flow description** https://excalidraw.com/#room=56260809cd6e764d0519,blpuojSmVyAmm5VN7p1JBA
 
