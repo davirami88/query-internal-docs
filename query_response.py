@@ -68,19 +68,12 @@ def get_openai_response(prompt, text, model):
 
     return result
 
-def get_query_response(s3_bucket_name, document_name, key_csv_text_file, key_csv_embeddings_file, query):
+def get_query_response(s3_bucket_name, txt_file, key_csv_text_file, key_csv_embeddings_file, query):
     try:
         # Get the files from the S3 object
-        res = s3_text.Object(s3_bucket_name, document_name)
+        res = s3_text.Object(s3_bucket_name, txt_file)
 
-        file_content = res.get()['Body'].read().decode('utf-8')
-        json_content = json.loads(file_content)
-
-        text = []
-        for page in json_content:
-            text.append(page[0])
-
-        text = ' '.join(text)
+        text = res.get()['Body'].read().decode('utf-8')
         
         obj_text = s3.get_object(Bucket=s3_bucket_name, Key=key_csv_text_file)
         obj_embeddings = s3.get_object(Bucket=s3_bucket_name, Key=key_csv_embeddings_file)
