@@ -16,6 +16,8 @@ from tenacity import (
     wait_random_exponential,
 )  # for exponential backoff
 
+s3 = boto3.client('s3')
+
 embedding_engine = 'text-embedding-ada-002'
 OPENAI_API_KEY = "OPENAI_API_KEY"
 
@@ -37,7 +39,6 @@ def get_openai_embedding(text, model=embedding_engine):
 def compute_doc_embeddings_openai(df: pd.DataFrame):
     return {idx: get_openai_embedding(r.content) for idx, r in df.iterrows()}
 
-#Future function to generate the embeddings from an S3 file
 def get_text_from_md_file(s3, bucket, key):
     s3Object = s3.get_object(Bucket=bucket, Key=key)
     file_buffer = BytesIO(s3Object['Body'].read())
@@ -63,34 +64,40 @@ def get_document_embeddings(text):
     openai_embeddings = pd.DataFrame(compute_doc_embeddings_openai(df_text))
     
     return df_text, openai_embeddings
-    
-#Future function to upload the embeddings to S3
+
 def upload_documents(raw_text, pages, df_text, df_embeddings, s3, bucket, key):
     csv_buffer = StringIO()
     csv_vector_buffer = StringIO()
     
     document_name_array = os.path.splitext(key)
     
-    # Upload both .txt files
     txt_document_name = document_name_array[0] + '.txt'
-    s3.put_object(Body=raw_text,Bucket=bucket,Key=txt_document_name)
-
+    s3.put_object(Body=raw_text, Bucket=bucket, Key=txt_document_name)
+    
     # Upload file with the text for embeddings
     df_text.to_csv(csv_buffer, index=False)
     csv_filename = document_name_array[0] + '_embeddings_text.csv'
-    s3.put_object(Body=csv_buffer.getvalue(), Bucket=S3_BUCKET, Key=csv_filename)
+    s3.put_object(Body=csv_buffer.getvalue(), Bucket=bucket, Key=csv_filename)
 
     # Upload file with the embeddings
     df_embeddings.to_csv(csv_vector_buffer, index=False)
     csv_embeddings_filename = document_name_array[0] + '_embeddings.csv'
-    s3.put_object(Body=csv_vector_buffer.getvalue(), Bucket=S3_BUCKET, Key=csv_embeddings_filename)
+    s3.put_object(Body=csv_vector_buffer.getvalue(), Bucket=bucket, Key=csv_embeddings_filename)
 
-    n_of_pages = len(pages)
-
-    return txt_document_name, n_of_pages
+    return txt_document_name, txt_document_name_pages, csv_filename, csv_embeddings_filename
 
 def lambda_handler(event, context):
     s3 = boto3.client('s3')
     region = "us-east-1"
 
-    #TODO the code to read the "event" to get the parameters and run the functions above
+    bucket = event["bucket"]
+    upload_bucket = event["upload_bucket"]
+    key = event["key"]
+    
+    raw_text = get_text_from_md_file(s3, bucket, key)
+
+    df_text, df_embeddings = get_document_embeddings(raw_text)
+
+    txt_document_name, csv_filename, csv_embeddings_filename = upload_documents(raw_text, df_text, df_embeddings, s3, upload_bucket, key)
+
+    return txt_document_name, csv_filename, csv_embeddings_filename
